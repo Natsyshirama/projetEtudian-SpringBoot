@@ -18,6 +18,7 @@ public class EtudiantController {
 
     @GetMapping
     public String listeEtudiants(Model model) {
+        
         model.addAttribute("etudiants", etudiantRepository.findAll());
         return "liste";
     }

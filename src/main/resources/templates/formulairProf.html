@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Formulaire Prof</title></head>
+<body>
+<h2 th:text="${prof.id != null ? 'Modifier Prof' : 'Ajouter Prof'}"></h2>
+<form th:action="@{${prof.id != null ? '/profs/modif' : '/profs/ajouterProf'}}" th:object="${prof}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    Nom : <input type="text" th:field="*{nom}"/><br/>
+    Prénom : <input type="text" th:field="*{prenom}"/><br/>
+    Email : <input type="email" th:field="*{email}"/><br/>
+    date Embauche : <input type="date" th:field="*{dateEmbauche}"/><br/>
+
+    <button type="submit">Enregistrer</button>
+</form>
+<a href="/profs">Retour</a>
+</body>
+</html>

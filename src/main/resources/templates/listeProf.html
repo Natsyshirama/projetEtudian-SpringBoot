@@ -15,7 +15,8 @@
             <td th:text="${pf.dateEmbauche}">date Embauche</td>
             <td>
                 <a th:href="@{/profs/modifierProf/{id}(id=${pf.id})}">Modifier</a>
-
+                 <a th:href="@{/profs/deleteProf/{id}(id=${pf.id})}" 
+               onclick="return confirm('Confirmer la suppression ?')">Supprimer</a>
             </td>
 
         </tr>

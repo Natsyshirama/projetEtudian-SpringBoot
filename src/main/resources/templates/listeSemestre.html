@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head><title>Liste des Semestre</title></head>
+<body>
+    <h3>Liste des Semestre</h3>
+        <a href="/semestre/ajouterSemestre">ajout Semestre</a>
+
+    <table border="1">
+        <tr><th>Id</th><th>Nom</th><th>Date Debut</th><th>Date Fin</th></tr>
+        <tr th:each="semestre : ${semestres}">
+            <td th:text="${semestre.id}">1</td>
+            <td th:text="${semestre.nomSemestre}">Nom</td>
+            <td th:text="${semestre.dateDebut}">date Debut</td>
+            <td th:text="${semestre.dateFin}">date Fin</td>
+            <td>
+                
+            </td>
+
+        </tr>
+    </table>
+</body>
+</html>

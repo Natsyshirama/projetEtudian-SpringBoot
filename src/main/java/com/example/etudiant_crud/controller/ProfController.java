@@ -49,5 +49,11 @@ public class ProfController {
         profRepository.save(prof);
         return "redirect:/profs";
     }
+
+    @GetMapping("/deleteProf/{id}")
+    public String deleteProf(@PathVariable Long id) {
+        profRepository.deleteById(id);
+        return "redirect:/profs";
+    }
     
 }

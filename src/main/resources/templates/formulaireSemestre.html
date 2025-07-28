@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Ajouter Semestre</title>
+</head>
+<body>
+    <h2>Ajouter un Semestre</h2>
+
+    <form th:action="@{/semestre/ajouterSemestre}" method="post" th:object="${semestre}">
+        <label>Nom du semestre:</label>
+        <input type="text" th:field="*{nomSemestre}" /><br>
+
+        <label>Date de début:</label>
+        <input type="date" th:field="*{dateDebut}" /><br>
+
+        <label>Date de fin:</label>
+        <input type="date" th:field="*{dateFin}" /><br>
+
+        <button type="submit">Enregistrer</button>
+    </form>
+</body>
+</html>

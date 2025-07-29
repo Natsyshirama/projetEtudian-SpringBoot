@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Liste matieres</title></head>
+<body>
+<h2>Liste des Matieres</h2>
+<a href="/matieres/ajouterMatiere">Ajouter Matiere</a>
+<table border="1">
+    <tr><th>ID</th><th>Nom</th><th>Code</th><th>Credit</th><th>Coefficient</th><th>Semestre</th><th>Prof</th><th>Action</th></tr>
+   <tr th:each="matiere : ${matieres}">
+    <td th:text="${matiere.id}">1</td>
+    <td th:text="${matiere.nomMatiere}">Nom</td>
+    <td th:text="${matiere.code}">Code</td>
+    <td th:text="${matiere.credit}">credit</td>
+    <td th:text="${matiere.coefficient}">Coefficient</td>
+    <td th:text="${matiere.semestre != null ? matiere.semestre.nomSemestre : 'Non défini'}">Semestre</td>
+    <td th:text="${matiere.prof != null ? matiere.prof.nom : 'Non défini'}">Professeur</td>
+    <td>
+        <a th:href="@{/matieres/modifierMatiere/{id}(id=${matiere.id})}">Modifier</a>
+    </td>
+</tr>
+
+</table>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Formulaire Matiere</title></head>
+<body>
+<h2 th:text="${matiere.id != null ? 'Modifier Matiere' : 'Ajouter Matiere'}"></h2>
+<form th:action="@{${matiere.id != null ? '/matieres/modifierMatiere' : '/matieres/ajouterMatiere'}}" 
+      th:object="${matiere}" method="post">
+
+    <input type="hidden" th:field="*{id}"/>
+
+    Nom : <input type="text" th:field="*{nomMatiere}"/><br/>
+    Code : <input type="text" th:field="*{code}"/><br/>
+    Credit : <input type="number" th:field="*{credit}"/><br/>
+    Coefficient : <input type="number" th:field="*{coefficient}"/><br/>
+
+    Professeur :
+    <select th:field="*{prof}">
+        <option th:each="prof : ${profs}" 
+                th:value="${prof.id}" 
+                th:text="${prof.nom} + ' ' + ${prof.prenom}"></option>
+    </select><br/>
+
+    Semestre :
+    <select th:field="*{semestre}">
+        <option th:each="sem : ${semestres}" 
+                th:value="${sem.id}" 
+                th:text="${sem.nomSemestre}"></option>
+    </select><br/>
+
+    <button type="submit">Enregistrer</button>
+</form>
+
+<a href="/matieres">Retour</a>
+</body>
+</html>

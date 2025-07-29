@@ -2,7 +2,6 @@ package com.example.etudiant_crud.model;
 import jakarta.persistence.*;
 
 @Entity
-
 public class Matiere {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,11 +16,11 @@ public class Matiere {
     private double coefficient;
 
     @ManyToOne
-    @JoinColumn(name = "prof_id")  // FK vers Prof
+    @JoinColumn(name = "prof_id")  
     private Prof prof;
 
     @ManyToOne
-    @JoinColumn(name = "semestre_id") // FK vers Semestre
+    @JoinColumn(name = "semestre_id") 
     private Semestre semestre;
 
 

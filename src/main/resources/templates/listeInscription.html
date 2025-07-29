@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Liste des inscriptions</title>
+</head>
+<body>
+    <h1>Liste des Inscriptions</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Étudiant</th>
+                <th>Semestre</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="ins : ${inscriptions}">
+                <td th:text="${ins.id}"></td>
+                <td th:text="${ins.dateCreation}"></td>
+                <td th:text="${ins.etudiant.nom + ' ' + ins.etudiant.prenom}"></td>
+                <td th:text="${ins.semestre.nomSemestre}"></td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <a th:href="@{/inscriptions/ajouter}">Ajouter une inscription</a>
+</body>
+</html>

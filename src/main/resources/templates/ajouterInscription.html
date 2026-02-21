@@ -1,34 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Ajouter une inscription</title>
-</head>
+<head><title>Ajouter Inscription</title></head>
 <body>
-    <h1>Nouvelle Inscription</h1>
+<h2>Ajouter une Inscription</h2>
 
-    <form th:action="@{/inscriptions/ajouter}" method="post" th:object="${inscription}">
-        <label>Étudiant :</label>
-        <select th:field="*{etudiant}">
-            <option th:each="etudiant : ${etudiants}" 
-                    th:value="${etudiant.id}" 
-                    th:text="${etudiant.nom + ' ' + etudiant.prenom}">
-            </option>
-        </select>
-        <br><br>
+<!-- Affichage des messages -->
+<div th:if="${message}" style="color:red" th:text="${message}"></div>
+<div th:if="${error}" style="color:red" th:text="${error}"></div>
+<div th:if="${success}" style="color:green" th:text="${success}"></div>
 
-        <label>Semestre :</label>
-        <select th:field="*{semestre}">
-            <option th:each="sem : ${semestres}" 
-                    th:value="${sem.id}" 
-                    th:text="${sem.nomSemestre}">
-            </option>
-        </select>
-        <br><br>
+<!-- Formulaire pour vérifier -->
+<form th:action="@{/inscriptions/verifier}" method="post">
+    <label>ID Étudiant :</label>
+    <input type="number" name="etudiantId" th:value="${etudiantId}" required><br>
 
-        <button type="submit">Enregistrer</button>
+    <label>Semestre :</label>
+    <select name="semestreId" required>
+        <option th:each="s : ${semestres}" th:value="${s.id}" th:text="${s.nomSemestre}"></option>
+    </select><br><br>
+
+    <button type="submit">Vérifier</button>
+</form>
+
+<!-- Confirmation -->
+<div th:if="${confirmation}">
+    <p>Confirmer l’inscription de l’étudiant ID = <b th:text="${etudiantId}"></b> au semestre ID = <b th:text="${semestreId}"></b> ?</p>
+    <form th:action="@{/inscriptions/confirmer}" method="post">
+        <input type="hidden" name="etudiantId" th:value="${etudiantId}">
+        <input type="hidden" name="semestreId" th:value="${semestreId}">
+        <button type="submit">Confirmer</button>
     </form>
+</div>
 
-    <br>
-    <a th:href="@{/inscriptions/liste}">Voir la liste des inscriptions</a>
 </body>
 </html>

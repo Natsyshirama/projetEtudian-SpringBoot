@@ -1,0 +1,27 @@
+<!-- layout.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="layout">
+<head>
+<title th:text="${pageTitle}">Titre par défaut</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header>
+        <h1>Mon site</h1>
+        <nav>
+            <a th:href="@{/etudiants}">Étudiants</a> |
+            <a th:href="@{/profs}">Profs</a> |
+            <a th:href="@{/inscriptions}">Inscriptions</a>
+        </nav>
+    </header>
+
+    <main>
+        <div th:insert="~{::body}"></div>
+    </main>
+
+    <footer>
+        <hr>
+        <p>© 2025</p>
+    </footer>
+</body>
+</html>
